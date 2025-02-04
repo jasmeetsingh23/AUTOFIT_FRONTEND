@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AUTOFIT - HAND & GARAGE TOOLS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+    <style>
+      /* Highlight the clicked image */
+      .highlighted {
+        border: 3px solid #007bff; /* Add a blue border or choose another color */
+        transform: scale(1.05); /* Slight zoom effect */
+        transition: transform 0.3s ease, border 0.3s ease; /* Smooth transition */
+      }
+    </style>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      @media (max-width: 768px) {
+        img[alt="AUTOFIT Logo"] {
+          height: 40px !important; /* Smaller height for mobile */
+        }
+      }
+      #modalImage {
+        max-width: 90%; /* Adjust the image size */
+        max-height: 80vh; /* Limit the height of the image */
+        margin: 0 auto; /* Center the image */
+        display: block; /* Ensures the image is centered in the modal */
+      }
+    </style>
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="spinner-border text-primary"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light p-0">
+      <div class="row gx-0">
+        <!-- Contact Information -->
+        <div class="col-md-7 px-3 px-lg-5">
+          <div
+            class="d-flex flex-row justify-content-center justify-content-lg-start"
+          >
+            <div class="d-inline-flex align-items-center py-2 me-4">
+              <small class="fa fa-phone-alt text-primary me-2"></small>
+              <small>9711314841</small>
+            </div>
+            <div class="d-inline-flex align-items-center py-2">
+              <small class="far fa-envelope text-primary me-2"></small>
+              <small>dcpltools@gmail.com</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="col-md-5 px-3 px-lg-5">
+          <div
+            class="d-flex justify-content-center justify-content-lg-end align-items-center py-2"
+          >
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-0" href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav
+      class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0"
+    >
+      <a
+        href="index.html"
+        class="navbar-brand d-flex align-items-center px-4 px-lg-5"
+      >
+        <!-- <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>AUTOFIT</h2> -->
+        <!-- <h2 class="m-0 text-primary d-flex align-items-center"> -->
+        <img
+          src="img/LOGO.png"
+          alt="AUTOFIT Logo"
+          class="me-2"
+          style="height: 60px; width: auto; max-width: 100%"
+        />
+
+        <!-- </h2> -->
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler me-4"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="index.html" class="nav-item nav-link active">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <!-- <a href="service.html" class="nav-item nav-link">Services</a> -->
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              Products
+            </a>
+            <div class="dropdown-menu fade-up m-0" id="category-dropdown">
+              <!-- Categories will be inserted here dynamically -->
+            </div>
+          </div>
+          <a href="blog.html" class="nav-item nav-link">Blogs</a>
+          <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+        <a
+          href="enquire.html"
+          class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+          >Get A Quote<i class="fa fa-arrow-right ms-3"></i
+        ></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div
+      class="container-fluid page-header mb-5 p-0"
+      style="background-image: url(img/5.jpeg)"
+    >
+      <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+          <h1 class="display-3 text-white mb-3 animated slideInDown">
+            Gallery
+          </h1>
+          <!-- <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Pages</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">
+                Testimonial
+              </li>
+            </ol>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container">
+        <div class="text-center">
+          <h6 class="text-primary text-uppercase">// Gallery //</h6>
+          <h1 class="mb-5">Latest Updates</h1>
+        </div>
+
+        <!-- Gallery Images Section -->
+        <div id="gallery" class="row">
+          <!-- Images will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+    <!-- Testimonial End -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="imageModal"
+      tabindex="-1"
+      aria-labelledby="imageModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <!-- Use modal-lg for larger size -->
+        <div class="modal-content">
+          <div class="modal-body">
+            <img id="modalImage" src="" class="img-fluid" alt="Large Image" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div
+      class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4" style="white-space: nowrap">
+              DEWAN CHAND PANNA LAL
+            </h4>
+            <p class="mb-2">
+              <i class="fa fa-map-marker-alt me-3"></i>3709-11, Katra Dhoomi
+              Mal, Chawri Bazar, Delhi - 110006
+            </p>
+            <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9711314841</p>
+            <p class="mb-2">
+              <i class="fa fa-envelope me-3"></i>dcpltools@gmail.com
+            </p>
+            <!-- <div class="d-flex pt-2">
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-twitter"></i
+             ></a>
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-facebook-f"></i
+             ></a>
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-youtube"></i
+             ></a>
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-linkedin-in"></i
+             ></a>
+           </div> -->
+            <div class="d-flex justify-content-between align-items-center pt-2">
+              <a href="#">
+                <img src="img/2.jpeg" alt="Logo 1" class="social-imgs" />
+              </a>
+              <a href="#">
+                <img src="img/3.jpeg" alt="Logo 2" class="social-img" />
+              </a>
+              <a href="#">
+                <img src="img/4.jpeg" alt="Logo 3" class="social-img" />
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Opening Hours</h4>
+            <h6 class="text-light">Monday - Friday:</h6>
+            <p class="mb-4">09.00 AM - 09.00 PM</p>
+            <h6 class="text-light">Saturday - Sunday:</h6>
+            <p class="mb-0">09.00 AM - 12.00 PM</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Pages</h4>
+            <a class="btn btn-link" href="about.html">About Us</a>
+            <a class="btn btn-link" href="products.html">Products</a>
+            <a class="btn btn-link" href="blogs.html">Blogs</a>
+            <a class="btn btn-link" href="gallery.html">Gallery</a>
+            <a class="btn btn-link" href="contact.html">Contact</a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Tools We Offer</h4>
+            <p id="tools-list" style="font-weight: 300">
+              <!-- Categories will be inserted here dynamically -->
+            </p>
+
+            <!-- <div class="position-relative mx-auto" style="max-width: 400px;">
+                       <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                       <button type="button"
+                           class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                   </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              All Rights Reserved &copy; Autofit Handtools | Designed By
+              <a href="https://www.designbullz.com" class="border-bottom"
+                >Design Bullz</a
+              >
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-md-5 px-3 px-lg-5">
+              <div
+                class="d-flex justify-content-center justify-content-lg-end align-items-center py-2"
+              >
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-0" href="">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+      async function fetchCategoriesForDropdown() {
+        const dropdownMenu = document.getElementById("category-dropdown");
+        const toolsList = document.getElementById("tools-list"); // Get the tools list container
+
+        try {
+          const response = await fetch(
+            "https://autofittools.com/api/categories"
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch categories");
+          }
+          const categories = await response.json();
+
+          // Clear the dropdown menu before appending new content
+          dropdownMenu.innerHTML = "";
+          toolsList.innerHTML = ""; // Clear the tools list before appending new content
+
+          // Display categories in the dropdown
+          categories.forEach((category) => {
+            const categoryLink = document.createElement("a");
+            categoryLink.className = "dropdown-item";
+            categoryLink.href = `products.html?category=${encodeURIComponent(
+              category.title
+            )}`;
+            categoryLink.textContent = category.title;
+            dropdownMenu.appendChild(categoryLink);
+
+            // Display the categories in the "Tools We Offer" section as a list
+            const categoryText = document.createElement("span");
+            categoryText.className = "category-item";
+            categoryText.innerHTML = `<strong>${category.title}</strong> | `;
+            toolsList.appendChild(categoryText);
+          });
+
+          // Remove the last " | " from the list
+          const lastCategory = toolsList.lastElementChild;
+          if (lastCategory) {
+            lastCategory.innerHTML = lastCategory.innerHTML.slice(0, -3); // Remove " | "
+          }
+        } catch (error) {
+          console.error("Error fetching categories:", error);
+          dropdownMenu.innerHTML =
+            '<a class="dropdown-item text-danger" href="#">Failed to load categories</a>';
+          toolsList.innerHTML =
+            '<span class="text-danger">Failed to load categories.</span>';
+        }
+      }
+
+      // Call the fetchCategoriesForDropdown function when the page loads
+      document.addEventListener("DOMContentLoaded", fetchCategoriesForDropdown);
+    </script>
+    <script>
+      // Fetch images from the API and display them in the gallery
+      fetch("https://autofittools.com/api/gallery/images")
+        .then((response) => response.json())
+        .then((images) => {
+          const gallery = document.getElementById("gallery");
+
+          images.forEach((image) => {
+            // Create a new image element for each image URL
+            const imageElement = document.createElement("div");
+            imageElement.classList.add("col-lg-3", "col-md-4", "mb-4"); // For 4 images per row on large screens and 3 per row on medium screens
+
+            const imgTag = document.createElement("img");
+            imgTag.src = "https://autofittools.com" + image.imageUrl; // Add base URL to image URL
+            imgTag.classList.add("img-fluid", "rounded"); // For responsive and rounded images
+
+            // Add click event listener to open modal
+            imgTag.addEventListener("click", () => {
+              const modalImage = document.getElementById("modalImage");
+              modalImage.src = imgTag.src; // Set the modal image source to the clicked image
+              const modal = new bootstrap.Modal(
+                document.getElementById("imageModal")
+              );
+              modal.show(); // Show the modal
+            });
+
+            imageElement.appendChild(imgTag);
+            gallery.appendChild(imageElement);
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching images:", error);
+        });
+    </script>
+  </body>
+</html>

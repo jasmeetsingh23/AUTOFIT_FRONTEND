@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AUTOFIT - HAND & GARAGE TOOLS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media (max-width: 768px) {
+        img[alt="AUTOFIT Logo"] {
+          height: 40px !important; /* Smaller height for mobile */
+        }
+        .download-catalog {
+          display: none !important; /* Hide the button on small screens */
+        }
+      }
+      /* Download Catalog Button Styles */
+      .download-catalog {
+        position: fixed;
+        left: 25px;
+        top: 50%;
+        transform: rotate(-90deg) translateY(-50%);
+        transform-origin: left top;
+        background-color: #d81324;
+        color: white;
+        padding: 15px 20px;
+        text-decoration: none;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+      }
+
+      .download-catalog:hover {
+        background-color: #b0101d;
+        color: white;
+        text-decoration: none;
+      }
+
+      .download-catalog i {
+        transform: rotate(90deg);
+      }
+    </style>
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <style>
+      .form-container-wrapper {
+        display: flex;
+        justify-content: center;
+        padding-top: 80px;
+        padding-bottom: 40px;
+      }
+
+      .containers {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 900px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      textarea {
+        resize: vertical;
+        max-width: 100%;
+      }
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .checkbox-group div {
+        width: calc(25% - 10px); /* 4 items per row on desktop */
+        margin: 0;
+        padding: 5px;
+      }
+
+      /* Mobile responsive adjustments */
+      @media screen and (max-width: 768px) {
+        .checkbox-group div {
+          width: calc(50% - 10px); /* 2 items per row on tablet */
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .checkbox-group div {
+          width: 100%; /* 1 item per row on mobile */
+          display: flex;
+          align-items: center;
+          padding: 8px 5px;
+        }
+
+        .checkbox-group div input[type="checkbox"] {
+          margin-right: 10px;
+        }
+      }
+
+      .submit-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .submit-btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Improve checkbox and label alignment */
+      .checkbox-group input[type="checkbox"] {
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      .checkbox-group label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 0;
+        font-weight: normal;
+      }
+    </style>
+
+    <style>
+      /* Container for checkbox group */
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* Reduced gap between items */
+        justify-content: space-between; /* Ensure space is distributed evenly */
+      }
+
+      /* Style for each checkbox-item */
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Reduced gap between checkbox and title */
+        width: 23%; /* Keeps 4 per row, adjust if needed */
+        box-sizing: border-box; /* Ensure padding/margins are included in the width */
+      }
+
+      /* Ensure responsive behavior */
+      @media (max-width: 768px) {
+        .checkbox-item {
+          width: 45%; /* Fit 2 per row on smaller screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .checkbox-item {
+          width: 100%; /* Fit 1 per row on very small screens */
+        }
+      }
+      /* Base modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.3s ease-in-out;
+        overflow: hidden;
+      }
+
+      .modal-content {
+        background-color: white;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+        animation: slideIn 0.3s ease-in-out;
+        max-height: 90vh; /* Maximum height relative to viewport */
+        overflow-y: auto; /* Allow scrolling within modal if content is too long */
+      }
+
+      .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        color: #aaa;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s;
+        padding: 8px;
+        line-height: 1;
+        z-index: 1001;
+      }
+
+      .close:hover {
+        color: #333;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -45%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      /* Modal message styles */
+      #modalMessage {
+        text-align: center;
+        padding: 10px;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      /* Mobile-specific adjustments */
+      @media screen and (max-width: 768px) {
+        .modal-content {
+          padding: 20px;
+          width: 95%;
+        }
+
+        #modalMessage {
+          font-size: 14px;
+          padding: 5px;
+        }
+
+        .close {
+          right: 10px;
+          top: 8px;
+          font-size: 22px;
+          padding: 5px;
+        }
+      }
+
+      /* Small mobile devices */
+      @media screen and (max-width: 480px) {
+        .modal-content {
+          padding: 15px;
+          max-height: 85vh; /* Slightly smaller for very small screens */
+        }
+
+        .close {
+          right: 8px;
+          top: 5px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Add Download Catalog Button -->
+    <a
+      href="img/AUTOFIT LIST AF-007 Nov-2023.pdf"
+      class="download-catalog"
+      target="_blank"
+    >
+      <i class="fa fa-download"></i>
+      Download Our Catalogue
+    </a>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="spinner-border text-primary"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <!-- <div class="container-fluid bg-light p-0">
+      <div class="row gx-0"> -->
+    <!-- Contact Information -->
+    <!-- <div class="col-md-7 px-3 px-lg-5">
+          <div
+            class="d-flex flex-row justify-content-center justify-content-lg-start"
+          >
+            <div class="d-inline-flex align-items-center py-2 me-4">
+              <small class="fa fa-phone-alt text-primary me-2"></small>
+              <small>9711314841</small>
+            </div>
+            <div class="d-inline-flex align-items-center py-2">
+              <small class="far fa-envelope text-primary me-2"></small>
+              <small>dcpltools@gmail.com</small>
+            </div>
+          </div>
+        </div> -->
+
+    <!-- Social Media Links -->
+    <!-- <div class="col-md-5 px-3 px-lg-5">
+          <div
+            class="d-flex justify-content-center justify-content-lg-end align-items-center py-2"
+          >
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-0" href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav
+      class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0"
+    >
+      <a
+        href="index.html"
+        class="navbar-brand d-flex align-items-center px-4 px-lg-5"
+      >
+        <!-- <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>AUTOFIT</h2> -->
+        <!-- <h2 class="m-0 text-primary d-flex align-items-center"> -->
+        <img
+          src="img/LOGO.png"
+          alt="AUTOFIT Logo"
+          class="me-2"
+          style="height: 60px; width: auto; max-width: 100%"
+        />
+
+        <!-- </h2> -->
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler me-4"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="index.html" class="nav-item nav-link active">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="category.html" class="nav-item nav-link">Products</a>
+          <a href="exhibition.html" class="nav-item nav-link">Exhibition</a>
+
+          <a href="distributors.html" class="nav-item nav-link"
+            >Dealers & Distributors</a
+          >
+          <!-- <a href="gallery.html" class="nav-item nav-link">Gallery</a> -->
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+        <a
+          href="enquire.html"
+          class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+          >Get A Quote<i class="fa fa-arrow-right ms-3"></i
+        ></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!--Enquiry Form Start -->
+    <div class="form-container-wrapper">
+      <div class="containers">
+        <h2 style="text-align: center">Fill the Form for Export Enquiry</h2>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="country">Country *</label>
+            <input type="text" id="country" name="country" required />
+          </div>
+          <div class="form-group">
+            <label for="number">Phone Number *</label>
+            <input type="text" id="number" name="number" required />
+          </div>
+          <div class="form-group">
+            <label>Select Products List *</label>
+            <div id="checkbox-group" class="checkbox-group"></div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="comments">Comments / Questions *</label>
+            <textarea
+              id="comments"
+              name="comments"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <div style="text-align: center">
+            <button type="submit" class="submit-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Enquiry Form End -->
+    <!-- Add this right before the footer -->
+    <div id="messageModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <p id="modalMessage"></p>
+      </div>
+    </div>
+    <!-- Footer Start -->
+    <div
+      class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4" style="white-space: nowrap">
+              DEWAN CHAND PANNA LAL
+            </h4>
+
+            <div class="mb-3">
+              <p class="mb-2">
+                <i class="fa fa-map-marker-alt me-3"></i>
+                3709-11, Katra Dhoomi Mal, Chawri Bazar, Delhi - 110006
+              </p>
+              <p class="mb-3">
+                <i class="fa fa-phone-alt me-3"></i> 8595125440 (Head Office)
+              </p>
+            </div>
+
+            <div class="mb-3">
+              <p class="mb-2">
+                <i class="fa fa-map-marker-alt me-3"></i>
+                AG - 75, (Behind Indian Oil Pump) Sanjay Gandhi Transport Nagar,
+                Delhi - 110042
+              </p>
+              <p class="mb-3">
+                <i class="fa fa-phone-alt me-3"></i> 9811884755 (Warehouse)
+              </p>
+            </div>
+
+            <p class="mt-3">
+              <i class="fa fa-envelope me-3"></i>enquiry@autofittools.com
+            </p>
+            <!-- <div class="d-flex pt-2">
+           <a class="btn btn-outline-light btn-social" href=""
+             ><i class="fab fa-twitter"></i
+           ></a>
+           <a class="btn btn-outline-light btn-social" href=""
+             ><i class="fab fa-facebook-f"></i
+           ></a>
+           <a class="btn btn-outline-light btn-social" href=""
+             ><i class="fab fa-youtube"></i
+           ></a>
+           <a class="btn btn-outline-light btn-social" href=""
+             ><i class="fab fa-linkedin-in"></i
+           ></a>
+         </div> -->
+            <div class="d-flex justify-content-between align-items-center pt-2">
+              <a href="#">
+                <img src="img/2.jpeg" alt="Logo 1" class="social-imgs" />
+              </a>
+              <a href="#">
+                <img src="img/3.jpeg" alt="Logo 2" class="social-img" />
+              </a>
+              <a href="#">
+                <img src="img/4.jpeg" alt="Logo 3" class="social-img" />
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Opening Hours</h4>
+            <h6 class="text-light">Monday - Saturday:</h6>
+            <p class="mb-4">11.00 AM - 07.00 PM</p>
+            <h6 class="text-light" style="display: inline">Sunday:</h6>
+            <p class="mb-4" style="display: inline">Closed</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Pages</h4>
+            <a class="btn btn-link" href="about.html">About Us</a>
+            <a class="btn btn-link" href="products.html">Products</a>
+            <a class="btn btn-link" href="exhibition.html">Exhibtion</a>
+            <a class="btn btn-link" href="distributors.html"
+              >Dealers & Distributors</a
+            >
+            <a class="btn btn-link" href="contact.html">Contact</a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Tools We Offer</h4>
+            <p id="tools-list" style="font-weight: 300">
+              <!-- Categories will be inserted here dynamically -->
+            </p>
+
+            <!-- <div class="position-relative mx-auto" style="max-width: 400px;">
+                     <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                     <button type="button"
+                         class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                 </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              All Rights Reserved &copy; Autofit Handtools | Designed By
+              <a href="https://www.designbullz.com" class="border-bottom"
+                >Design Bullz</a
+              >
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-md-5 px-3 px-lg-5">
+              <div
+                class="d-flex justify-content-center justify-content-lg-end align-items-center py-2"
+              >
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  class="btn btn-sm-square bg-white text-primary me-0"
+                  href="https://www.instagram.com/autofit_tools/?igsh=MmJieml3NWNlZnY2#"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+      // Define the API endpoint for categories
+      const apiEndpoint = "https://autofittools.com/api/categories";
+
+      // Select the container for the checkbox group
+      const checkboxGroup = document.getElementById("checkbox-group");
+
+      // Fetch data from the API
+      fetch(apiEndpoint)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Check if the API response contains categories
+          if (Array.isArray(data)) {
+            // Iterate over the category list
+            data.forEach((category) => {
+              // Create a checkbox-item div dynamically
+              const checkboxItem = document.createElement("div");
+              checkboxItem.className = "checkbox-item";
+
+              // Create checkbox and label
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.name = "category";
+              checkbox.value = category.title; // Use category title
+
+              const label = document.createElement("label");
+              label.textContent = category.title; // Display category title
+              label.htmlFor = category.title;
+
+              // Append checkbox and label to the item
+              checkboxItem.appendChild(checkbox);
+              checkboxItem.appendChild(label);
+
+              // Append the checkbox-item to the checkbox group
+              checkboxGroup.appendChild(checkboxItem);
+            });
+          } else {
+            throw new Error("Invalid data format received from API");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          checkboxGroup.textContent = "Failed to load categories.";
+        });
+    </script>
+
+    <script>
+      // Replace your existing form submission script with this one
+      const modal = document.getElementById("messageModal");
+      const modalMessage = document.getElementById("modalMessage");
+      const closeModalBtn = document.getElementById("closeModal");
+
+      // Close modal when clicking the close button
+      closeModalBtn.onclick = function () {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      };
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      };
+
+      // Function to show modal with message
+      function showModal(message, isSuccess = true) {
+        modalMessage.innerHTML = `
+        <div style="text-align: center; padding: 10px;">
+            <div class="icon" style="font-size: clamp(36px, 8vw, 48px); margin-bottom: 15px;">
+                ${isSuccess ? "✅" : "❌"}
+            </div>
+            <div style="font-size: clamp(14px, 4vw, 18px); line-height: 1.4;">
+                ${message}
+            </div>
+        </div>
+    `;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Form submission handler
+      document
+        .querySelector("form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const formData = {
+            firstName: document.getElementById("firstName").value,
+            email: document.getElementById("email").value,
+            country: document.getElementById("country").value,
+            number: document.getElementById("number").value,
+            products: Array.from(
+              document.querySelectorAll("#checkbox-group input:checked")
+            ).map((checkbox) => checkbox.value),
+            subject: document.getElementById("subject").value,
+            comments: document.getElementById("comments").value,
+          };
+
+          try {
+            const response = await fetch(
+              "https://autofittools.com/api/enquiry",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+              }
+            );
+
+            const result = await response.json();
+            if (response.ok) {
+              showModal("Enquiry sent successfully!", true);
+              document.querySelector("form").reset(); // Reset form on success
+            } else {
+              showModal(
+                result.message || "Failed to send enquiry. Please try again.",
+                false
+              );
+            }
+          } catch (error) {
+            showModal("Failed to send message. Please try again later.", false);
+          }
+        });
+    </script>
+    <script>
+      fetch("https://autofittools.com/api/categories")
+        .then((response) => response.json())
+        .then((data) => {
+          const toolsList = document.getElementById("tools-list");
+          toolsList.textContent = data
+            .map((category) => category.title)
+            .join(" | ");
+        })
+        .catch((error) => console.error("Error fetching categories:", error));
+    </script>
+  </body>
+</html>

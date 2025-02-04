@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AUTOFIT - HAND & GARAGE TOOLS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @media (max-width: 768px) {
+        img[alt="AUTOFIT Logo"] {
+          height: 40px !important;
+        }
+        .download-catalog {
+          display: none !important;
+        }
+      }
+
+      /* Product Image Box Container */
+      .product-image-container {
+        background-color: white;
+        border: 2px solid #ffcdd2;
+        border-radius: 8px;
+        padding: 0; /* Remove padding to ensure full coverage */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        overflow: hidden; /* Prevents any overflow */
+        width: 100%; /* Ensures responsiveness */
+        height: 400px; /* Set a fixed height to control the image display */
+      }
+
+      /* Product Image Styling */
+      .product-image {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+      }
+
+      .product-image:hover {
+        transform: scale(1.05);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .product-image-container {
+          min-height: 300px;
+          height: 300px; /* Ensures a consistent height */
+          padding: 0; /* Remove padding to ensure full coverage */
+        }
+
+        .product-image {
+          width: 100%;
+          height: 100%;
+
+          display: block;
+        }
+      }
+
+      .product-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .product-description {
+        font-size: 1.1rem;
+        color: #666;
+      }
+
+      /* Product Card Container - Fixed Size */
+      .product-card {
+        transition: all 0.3s ease-in-out;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: white;
+        border: 2px solid #d81324;
+        box-shadow: 0 2px 10px rgba(255, 205, 210, 0.3);
+        margin-bottom: 20px;
+        cursor: pointer;
+        height: 320px; /* Fixed height for all cards */
+        display: flex;
+        flex-direction: column;
+        position: relative; /* For tooltip positioning */
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(255, 205, 210, 0.5);
+        border-color: #d81324;
+      }
+
+      /* Image Container - Fixed Height */
+      .product-card-image {
+        width: 100%;
+        height: 250px;
+        /* object-fit: cover; Changed from contain to cover */
+        padding: 0; /* Removed padding */
+        transition: transform 0.3s ease;
+        background-color: white;
+        /* flex-shrink: 0; */
+      }
+
+      .product-card:hover .product-card-image {
+        transform: scale(1.05);
+      }
+
+      /* Card Body - Fixed Height */
+      .product-card-body {
+        padding: 15px;
+        border-top: 2px solid #d81324;
+        height: 100px; /* Fixed height for body */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative; /* For tooltip positioning */
+        background-color: #ffe6e8 !important;
+      }
+
+      /* Card Title with Tooltip */
+      .product-card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        transition: color 0.3s ease;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Show max 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        width: 100%;
+        background-color: #ffe6e8 !important;
+      }
+
+      /* Tooltip for truncated text */
+      .product-card-body:hover .product-card-title {
+        color: #d81324;
+      }
+
+      /* Download Catalog Button Styles */
+      .download-catalog {
+        position: fixed;
+        left: 25px;
+        top: 50%;
+        transform: rotate(-90deg) translateY(-50%);
+        transform-origin: left top;
+        background-color: #d81324;
+        color: white;
+        padding: 15px 20px;
+        text-decoration: none;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+      }
+
+      .download-catalog:hover {
+        background-color: #b0101d;
+        color: white;
+        text-decoration: none;
+      }
+
+      .download-catalog i {
+        transform: rotate(90deg);
+      }
+
+      /* Product Specifications Styles */
+      .product-specs-container {
+        overflow-x: auto;
+        max-width: 100%;
+        margin: 15px 0;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .product-specs {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 0.75rem;
+        font-size: 12px;
+        table-layout: fixed;
+      }
+
+      .product-specs th,
+      .product-specs td {
+        border: 1px solid #dee2e6;
+        padding: 0.3rem;
+        vertical-align: middle;
+        text-align: center;
+        height: auto;
+        min-height: 24px;
+        line-height: 1.2;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+
+      .product-specs th {
+        background-color: #d81324 !important;
+        color: white;
+        font-weight: 600;
+        white-space: normal;
+        height: auto;
+        min-height: 28px;
+      }
+
+      .product-specs tr:nth-child(odd) td {
+        background-color: #fff;
+      }
+
+      .product-specs tr:nth-child(even) td {
+        background-color: #ffe6e8;
+      }
+
+      .product-specs tr:hover td {
+        background-color: #ffd9dc;
+      }
+
+      /* Desktop Specifications */
+      @media (min-width: 769px) {
+        .product-specs th,
+        .product-specs td {
+          min-width: 60px;
+          max-width: none;
+          width: auto;
+        }
+
+        .product-specs td {
+          font-weight: 500;
+          padding: 0.5rem;
+        }
+
+        .product-specs-container {
+          padding: 5px;
+          border-radius: 3px;
+        }
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .product-card {
+          height: 300px; /* Slightly smaller on mobile */
+        }
+
+        .product-card-image {
+          height: 200px;
+        }
+
+        .product-card-body {
+          height: 100px;
+        }
+
+        .product-card-title {
+          font-size: 1rem;
+        }
+
+        .product-specs-container {
+          border: 1px solid #dee2e6;
+          border-radius: 4px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-specs {
+          font-size: 11px;
+        }
+
+        .product-specs th,
+        .product-specs td {
+          padding: 0.4rem;
+          min-width: 80px;
+          max-width: none;
+        }
+
+        .product-specs-container::after {
+          content: "← Scroll →";
+          position: absolute;
+          bottom: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 12px;
+          color: #666;
+          opacity: 0.8;
+        }
+      }
+
+      /* Small Screen Specifications */
+      @media (max-width: 480px) {
+        .product-specs {
+          font-size: 10px;
+        }
+
+        .product-specs th,
+        .product-specs td {
+          padding: 0.25rem;
+          min-width: 60px;
+        }
+      }
+
+      /* Scroll Indicators */
+      .product-specs-container {
+        scroll-behavior: smooth;
+      }
+
+      .product-specs-container::before,
+      .product-specs-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .product-specs-container::before {
+        left: 0;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.9),
+          transparent
+        );
+      }
+
+      .product-specs-container::after {
+        right: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0.9),
+          transparent
+        );
+      }
+    </style>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Add Download Catalog Button -->
+    <a
+      href="img/AUTOFIT LIST AF-007 Nov-2023.pdf"
+      class="download-catalog"
+      target="_blank"
+    >
+      <i class="fa fa-download"></i>
+      Download Our Catalogue
+    </a>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="spinner-border text-primary"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <!-- <div class="container-fluid bg-light p-0">
+      <div class="row gx-0"> -->
+    <!-- Contact Information -->
+    <!-- <div class="col-md-7 px-3 px-lg-5">
+          <div
+            class="d-flex flex-row justify-content-center justify-content-lg-start"
+          >
+            <div class="d-inline-flex align-items-center py-2 me-4">
+              <small class="fa fa-phone-alt text-primary me-2"></small>
+              <small>9711314841</small>
+            </div>
+            <div class="d-inline-flex align-items-center py-2">
+              <small class="far fa-envelope text-primary me-2"></small>
+              <small>dcpltools@gmail.com</small>
+            </div>
+          </div>
+        </div> -->
+
+    <!-- Social Media Links -->
+    <!-- <div class="col-md-5 px-3 px-lg-5">
+          <div
+            class="d-flex justify-content-center justify-content-lg-end align-items-center py-2"
+          >
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-1" href="">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="btn btn-sm-square bg-white text-primary me-0" href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav
+      class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0"
+    >
+      <a
+        href="index.html"
+        class="navbar-brand d-flex align-items-center px-4 px-lg-5"
+      >
+        <!-- <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>AUTOFIT</h2> -->
+        <!-- <h2 class="m-0 text-primary d-flex align-items-center"> -->
+        <img
+          src="img/LOGO.png"
+          alt="AUTOFIT Logo"
+          class="me-2"
+          style="height: 60px; width: auto; max-width: 100%"
+        />
+
+        <!-- </h2> -->
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler me-4"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="index.html" class="nav-item nav-link active">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="category.html" class="nav-item nav-link">Products</a>
+          <a href="exhibition.html" class="nav-item nav-link">Exhibition</a>
+          <a href="distributors.html" class="nav-item nav-link"
+            >Dealers & Distributors</a
+          >
+          <!-- <a href="gallery.html" class="nav-item nav-link">Gallery</a> -->
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+        <a
+          href="enquire.html"
+          class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+          >Get A Quote<i class="fa fa-arrow-right ms-3"></i
+        ></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Product Details & Related Products Start -->
+
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row align-items-center mb-5" id="product-detail-container">
+          <!-- Product details will be inserted dynamically -->
+        </div>
+        <h2 class="text-center my-5">Related Products</h2>
+        <div class="row g-4" id="related-products-container">
+          <!-- Related products will be inserted dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details & Related Products End -->
+
+    <!-- Footer Start -->
+    <div
+      class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4" style="white-space: nowrap">
+              DEWAN CHAND PANNA LAL
+            </h4>
+
+            <div class="mb-3">
+              <p class="mb-2">
+                <i class="fa fa-map-marker-alt me-3"></i>
+                3709-11, Katra Dhoomi Mal, Chawri Bazar, Delhi - 110006
+              </p>
+              <p class="mb-3">
+                <i class="fa fa-phone-alt me-3"></i> 8595125440 (Head Office)
+              </p>
+            </div>
+
+            <div class="mb-3">
+              <p class="mb-2">
+                <i class="fa fa-map-marker-alt me-3"></i>
+                AG - 75, (Behind Indian Oil Pump) Sanjay Gandhi Transport Nagar,
+                Delhi - 110042
+              </p>
+              <p class="mb-3">
+                <i class="fa fa-phone-alt me-3"></i> 9811884755 (Warehouse)
+              </p>
+            </div>
+
+            <p class="mt-3">
+              <i class="fa fa-envelope me-3"></i>enquiry@autofittools.com
+            </p>
+            <!-- <div class="d-flex pt-2">
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-twitter"></i
+             ></a>
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-facebook-f"></i
+             ></a>
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-youtube"></i
+             ></a>
+             <a class="btn btn-outline-light btn-social" href=""
+               ><i class="fab fa-linkedin-in"></i
+             ></a>
+           </div> -->
+            <div class="d-flex justify-content-between align-items-center pt-2">
+              <a href="#">
+                <img src="img/2.jpeg" alt="Logo 1" class="social-imgs" />
+              </a>
+              <a href="#">
+                <img src="img/3.jpeg" alt="Logo 2" class="social-img" />
+              </a>
+              <a href="#">
+                <img src="img/4.jpeg" alt="Logo 3" class="social-img" />
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Opening Hours</h4>
+            <h6 class="text-light">Monday - Saturday:</h6>
+            <p class="mb-4">11.00 AM - 07.00 PM</p>
+            <h6 class="text-light" style="display: inline">Sunday:</h6>
+            <p class="mb-4" style="display: inline">Closed</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Pages</h4>
+            <a class="btn btn-link" href="about.html">About Us</a>
+            <a class="btn btn-link" href="products.html">Products</a>
+            <a class="btn btn-link" href="exhibition.html">Exhibtion</a>
+            <a class="btn btn-link" href="distributors.html"
+              >Dealers & Distributors</a
+            >
+            <a class="btn btn-link" href="contact.html">Contact</a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Tools We Offer</h4>
+            <p id="tools-list" style="font-weight: 300">
+              <!-- Categories will be inserted here dynamically -->
+            </p>
+
+            <!-- <div class="position-relative mx-auto" style="max-width: 400px;">
+                       <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                       <button type="button"
+                           class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                   </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              All Rights Reserved &copy; Autofit Handtools | Designed By
+              <a href="https://www.designbullz.com" class="border-bottom"
+                >Design Bullz</a
+              >
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-md-5 px-3 px-lg-5">
+              <div
+                class="d-flex justify-content-center justify-content-lg-end align-items-center py-2"
+              >
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-sm-square bg-white text-primary me-3" href="">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  class="btn btn-sm-square bg-white text-primary me-0"
+                  href="https://www.instagram.com/autofit_tools/?igsh=MmJieml3NWNlZnY2#"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+      // Get product ID and category from the URL query parameters
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get("productId");
+      const category = params.get("category");
+
+      fetch(`https://autofittools.com/api/products/${productId}`)
+        .then((response) => response.json())
+        .then((product) => {
+          const detailContainer = document.getElementById(
+            "product-detail-container"
+          );
+
+          // Generate product details with image on the left and content on the right
+          const productHTML = `
+  <div class="col-md-6 text-center">
+    <div class="product-image-container">
+      <img src="http://autofittools.com${
+        product.image_url
+      }" class="product-image" alt="${product.title}">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h3 class="product-title">${product.title}</h3>
+    <p class="product-description">${
+      product.content || "No description available"
+    }</p>
+    ${
+      product.specifications
+        ? `<table class="table table-bordered product-specs">
+      <thead>
+        <tr>
+          ${JSON.parse(product.specifications)
+            .map((spec) => `<th>${spec.title}</th>`)
+            .join("")}
+        </tr>
+      </thead>
+      <tbody>
+        ${generateSpecsRows(JSON.parse(product.specifications))}
+      </tbody>
+    </table>`
+        : ""
+    }
+  </div>`;
+
+          detailContainer.innerHTML = productHTML;
+
+          // Fetch related products in the same category
+          fetch(`https://autofittools.com/api/${encodeURIComponent(category)}`)
+            .then((response) => response.json())
+            .then((products) => {
+              const relatedContainer = document.getElementById(
+                "related-products-container"
+              );
+              products
+                .filter((p) => p.id !== parseInt(productId))
+                .forEach((relatedProduct) => {
+                  const colDiv = document.createElement("div");
+                  colDiv.className = "col-lg-3 col-md-4 col-sm-6";
+
+                  const cardDiv = document.createElement("div");
+                  cardDiv.className = "product-card ";
+
+                  const img = document.createElement("img");
+                  img.src = `http://autofittools.com${relatedProduct.image_url}`;
+                  img.className = "product-card-image card-img-top";
+                  img.alt = relatedProduct.title;
+
+                  const cardBody = document.createElement("div");
+                  cardBody.className = "product-card-body card-body";
+
+                  // Inside your loop where you create product cards
+                  const title = document.createElement("h5");
+                  title.className = "product-card-title card-title";
+                  title.textContent = relatedProduct.title;
+
+                  cardDiv.onclick = () => {
+                    window.location.href = `product-detail.html?productId=${
+                      relatedProduct.id
+                    }&category=${encodeURIComponent(category)}`;
+                  };
+
+                  cardBody.appendChild(title);
+                  cardDiv.appendChild(img);
+                  cardDiv.appendChild(cardBody);
+                  colDiv.appendChild(cardDiv);
+                  relatedContainer.appendChild(colDiv);
+                });
+            });
+        })
+        .catch((error) =>
+          console.error("Error fetching product details:", error)
+        );
+
+      // Function to generate table rows with each value appearing in a separate row
+      function generateSpecsRows(specifications) {
+        const maxValues = Math.max(
+          ...specifications.map((spec) => spec.values.length)
+        );
+
+        let rows = "";
+
+        for (let i = 0; i < maxValues; i++) {
+          rows += "<tr>";
+          specifications.forEach((spec) => {
+            const value = spec.values[i]
+              ? spec.values[i].replace(/;/g, ",")
+              : ""; // Replace ";" with ","
+            rows += `<td>${value}</td>`; // Fill empty cells if values are missing
+          });
+          rows += "</tr>";
+        }
+
+        return rows;
+      }
+    </script>
+    <script>
+      fetch("https://autofittools.com/api/categories")
+        .then((response) => response.json())
+        .then((data) => {
+          const toolsList = document.getElementById("tools-list");
+          toolsList.textContent = data
+            .map((category) => category.title)
+            .join(" | ");
+        })
+        .catch((error) => console.error("Error fetching categories:", error));
+    </script>
+  </body>
+</html>
