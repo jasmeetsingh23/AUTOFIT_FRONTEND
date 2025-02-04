@@ -985,19 +985,7 @@
 
         const mediaItems = [];
 
-        if (exhibition.videos && exhibition.videos.length > 0) {
-          exhibition.videos.forEach((video) => {
-            const videoElement = document.createElement("video");
-            videoElement.setAttribute("controls", "true");
-            videoElement.setAttribute(
-              "src",
-              `https://autofittools.com${video}`
-            );
-            videoElement.classList.add("exhibition-video");
-            mediaItems.push(videoElement);
-          });
-        }
-
+        // Add images first
         if (exhibition.images && exhibition.images.length > 0) {
           exhibition.images.forEach((image) => {
             const imageElement = document.createElement("img");
@@ -1011,6 +999,21 @@
           });
         }
 
+        // Add videos second
+        if (exhibition.videos && exhibition.videos.length > 0) {
+          exhibition.videos.forEach((video) => {
+            const videoElement = document.createElement("video");
+            videoElement.setAttribute("controls", "true");
+            videoElement.setAttribute(
+              "src",
+              `https://autofittools.com${video}`
+            );
+            videoElement.classList.add("exhibition-video");
+            mediaItems.push(videoElement);
+          });
+        }
+
+        // Append all media items to the container
         mediaItems.forEach((item) => contentContainer.appendChild(item));
         exhibitionDetailsContainer.appendChild(exhibitionTitle);
         exhibitionDetailsContainer.appendChild(contentContainer);
